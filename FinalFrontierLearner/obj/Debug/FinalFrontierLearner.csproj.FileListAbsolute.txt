@@ -1,0 +1,7 @@
+C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\bin\Debug\FinalFrontierLearner.exe.config
+C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\bin\Debug\FinalFrontierLearner.exe
+C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\bin\Debug\FinalFrontierLearner.pdb
+C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.csprojResolveAssemblyReference.cache
+C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.csproj.CoreCompileInputs.cache
+C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.exe
+C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.pdb
