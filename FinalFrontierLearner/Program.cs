@@ -107,6 +107,7 @@ namespace FinalFrontierLearner
             dt.Write(DictSenderName, userpath + "\\dict-sender-name.bin");
             dt.Write(DictSenderEmail, userpath + "\\dict-sender-email.bin");
             dt.Write(DictSenderCombo, userpath + "\\dict-sender-combo.bin");
+
         }
 
         static void Main(string[] args)
@@ -142,6 +143,11 @@ namespace FinalFrontierLearner
             Console.WriteLine("learned " + prog.cnt_mails + " mails  recursively from, starting in " + prog.FolderList[folderid] + ".");
 
             Console.WriteLine("dictionary files have been written to " + prog.userpath + "... keep these files where they are so that FinalFrontier can find them.");
+
+            Console.WriteLine("---VERIFYING---");
+            Console.WriteLine("dict-sender-name.bin: " + prog.dt.Read(prog.userpath + "\\dict-sender-name.bin").Count() + " entries");
+            Console.WriteLine("dict-sender-email.bin: " + prog.dt.Read(prog.userpath + "\\dict-sender-email.bin").Count() + " entries");
+            Console.WriteLine("dict-sender-combo.bin: " + prog.dt.Read(prog.userpath + "\\dict-sender-combo.bin").Count() + " entries");
 
             Console.WriteLine("[hit key to exit]");
 

@@ -5,3 +5,10 @@ C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\obj
 C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.csproj.CoreCompileInputs.cache
 C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.exe
 C:\Users\JunkerHolger\source\repos\FinalFrontierLearner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.pdb
+C:\Users\JunkerHolger\Source\Repos\hjunker\FinalFrontier-Learner\FinalFrontierLearner\bin\Debug\FinalFrontierLearner.exe.config
+C:\Users\JunkerHolger\Source\Repos\hjunker\FinalFrontier-Learner\FinalFrontierLearner\bin\Debug\FinalFrontierLearner.exe
+C:\Users\JunkerHolger\Source\Repos\hjunker\FinalFrontier-Learner\FinalFrontierLearner\bin\Debug\FinalFrontierLearner.pdb
+C:\Users\JunkerHolger\Source\Repos\hjunker\FinalFrontier-Learner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.csprojResolveAssemblyReference.cache
+C:\Users\JunkerHolger\Source\Repos\hjunker\FinalFrontier-Learner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.csproj.CoreCompileInputs.cache
+C:\Users\JunkerHolger\Source\Repos\hjunker\FinalFrontier-Learner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.exe
+C:\Users\JunkerHolger\Source\Repos\hjunker\FinalFrontier-Learner\FinalFrontierLearner\obj\Debug\FinalFrontierLearner.pdb
