@@ -27,7 +27,7 @@ namespace FinalFrontierLearner
         private int cnt_mails = 0;
         private string userpath;
 
-        private string[] badfolders = {"Junk", "Unwanted", "Trash", "Spam", "Posteingang", "Inbox"};
+        private string[] badfolders = { "Junk", "Unwanted", "Trash", "Spam", "Posteingang", "Inbox" };
 
         public void GetFolders(Outlook.Folder folder)
         {
@@ -53,9 +53,13 @@ namespace FinalFrontierLearner
             {
                 foreach (Outlook.Folder childFolder in childFolders)
                 {
-                    if (FolderList[folderid].Equals(childFolder.FolderPath))
+                    if (childFolder.FolderPath.Contains(FolderList[folderid]))
                     {
                         learning = true;
+                    }
+                    else
+                    {
+                        learning = false;
                     }
                     foreach (string badfolder in badfolders)
                     {
@@ -71,25 +75,32 @@ namespace FinalFrontierLearner
                         try
                         {
                             Items mails = childFolder.Items;
-                            foreach (Outlook.MailItem mail in mails)
+                            foreach (object mail in mails)
                             {
-                                Outlook.MailItem thismail = (mail as Outlook.MailItem);
-                                string senderName = thismail.SenderName;
-                                string senderEmailAddress = thismail.SenderEmailAddress;
-                                string senderCombo = senderName + "/" + senderEmailAddress;
-                                if (DictSenderName.ContainsKey(senderName))
-                                    DictSenderName[senderName] = DictSenderName[senderName] + 1;
-                                else
-                                    DictSenderName.Add(senderName, 1);
-                                if (DictSenderEmail.ContainsKey(senderEmailAddress))
-                                    DictSenderEmail[senderEmailAddress] = DictSenderEmail[senderEmailAddress] + 1;
-                                else
-                                    DictSenderEmail.Add(senderEmailAddress, 1);
-                                if (DictSenderCombo.ContainsKey(senderCombo))
-                                    DictSenderCombo[senderCombo] = DictSenderCombo[senderCombo] + 1;
-                                else
-                                    DictSenderCombo.Add(senderCombo, 1);
-                                cnt_mails++;
+                                try
+                                {
+                                    Outlook.MailItem thismail = (mail as Outlook.MailItem);
+                                    string senderName = thismail.SenderName;
+                                    string senderEmailAddress = thismail.SenderEmailAddress;
+                                    string senderCombo = senderName + "/" + senderEmailAddress;
+                                    if (DictSenderName.ContainsKey(senderName))
+                                        DictSenderName[senderName] = DictSenderName[senderName] + 1;
+                                    else
+                                        DictSenderName.Add(senderName, 1);
+                                    if (DictSenderEmail.ContainsKey(senderEmailAddress))
+                                        DictSenderEmail[senderEmailAddress] = DictSenderEmail[senderEmailAddress] + 1;
+                                    else
+                                        DictSenderEmail.Add(senderEmailAddress, 1);
+                                    if (DictSenderCombo.ContainsKey(senderCombo))
+                                        DictSenderCombo[senderCombo] = DictSenderCombo[senderCombo] + 1;
+                                    else
+                                        DictSenderCombo.Add(senderCombo, 1);
+                                    cnt_mails++;
+                                }
+                                catch (System.Exception ex)
+                                {
+                                    Debug.WriteLine(ex.Message);
+                                }
                             }
                         }
                         catch (System.Exception)
@@ -100,7 +111,7 @@ namespace FinalFrontierLearner
                         Console.WriteLine("Skipping folder " + childFolder.FolderPath);
                     }
                     
-                    LearnFolders(childFolder, learning, folderid);
+                    LearnFolders(childFolder, false, folderid);
                 }
             }
             userpath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
