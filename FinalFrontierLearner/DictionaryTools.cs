@@ -1,15 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
-namespace FinalFrontierLearnLib
+namespace FinalFrontier
 {
-    public class DictionaryTools
+    class DictionaryTools
     {
         // https://www.dotnetperls.com/dictionary-binary
+
+
         public void Write(Dictionary<string, int> dictionary, string file)
         {
-            if (dictionary.Count == 0)
-                return;
             using (FileStream fs = File.OpenWrite(file))
             using (BinaryWriter writer = new BinaryWriter(fs))
             {
