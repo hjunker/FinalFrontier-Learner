@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Microsoft.Office.Interop.Outlook;
 using System.Diagnostics;
 using FinalFrontierLearnLib;
-
+using System.IO;
 
 namespace FinalFrontierLearner
 {
@@ -129,6 +129,7 @@ namespace FinalFrontierLearner
             Learn learn = new Learn();
 
             int folderid = 0;
+            var userpath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FinalFrontier";
             
             Console.WriteLine("---AVAILABLE FOLDERS---");
             learn.GetFolders(root);
@@ -139,7 +140,7 @@ namespace FinalFrontierLearner
             Console.Write("Please enter the number (without trailing .) of the folder you want to learn from recursively: ");
             try
             {
-                folderid = Int16.Parse(Console.ReadLine());
+                folderid = short.Parse(Console.ReadLine());
             }
             catch (System.Exception)
             {
@@ -156,12 +157,27 @@ namespace FinalFrontierLearner
             Console.WriteLine("dictionary files have been written to " + "... keep these files where they are so that FinalFrontier can find them.");
 
             DictionaryTools dtLearn = new DictionaryTools();
-            var userpath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
             Console.WriteLine("---VERIFYING---");
-            Console.WriteLine("dict-sender-name.bin: " + dtLearn.Read(userpath + "\\dict-sender-name.bin").Count() + " entries");
-            Console.WriteLine("dict-sender-email.bin: " + dtLearn.Read(userpath + "\\dict-sender-email.bin").Count() + " entries");
-            Console.WriteLine("dict-sender-combo.bin: " + dtLearn.Read(userpath + "\\dict-sender-combo.bin").Count() + " entries");
+
+            var result = new Dictionary<string, int>();
+
+            foreach (var file in Directory.GetFiles(userpath))
+            {
+                if (file.EndsWith("-dict-sender-email.bin") ||
+                    file.EndsWith("-dict-sender-name.bin") ||
+                    file.EndsWith("-dict-sender-combo.bin")) { 
+                    foreach (var values in dtLearn.Read(file))
+                        if (!result.ContainsKey(values.Key))
+                            result.Add(values.Key, values.Value);
+                    
+                    Console.WriteLine($"{Path.GetFileName(file)}: " + dtLearn.Read(file).Count() + " entries");
+                }
+            }
+            
+            //Console.WriteLine("dict-sender-name.bin: " + dtLearn.Read(userpath + "\\dict-sender-name.bin").Count() + " entries");
+            //Console.WriteLine("dict-sender-email.bin: " + dtLearn.Read(userpath + "\\dict-sender-email.bin").Count() + " entries");
+            //Console.WriteLine("dict-sender-combo.bin: " + dtLearn.Read(userpath + "\\dict-sender-combo.bin").Count() + " entries");
 
             Console.WriteLine("[hit key to exit]");
 

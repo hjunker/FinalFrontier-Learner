@@ -3,6 +3,7 @@ using System.IO;
 
 namespace FinalFrontierLearnLib
 {
+    // TODO: Catch opening errors 
     public class DictionaryTools
     {
         // https://www.dotnetperls.com/dictionary-binary
@@ -38,6 +39,39 @@ namespace FinalFrontierLearnLib
                     string key = reader.ReadString();
                     int value = reader.ReadInt32();
                     result[key] = value;
+                }
+            }
+            return result;
+        }
+
+
+        public void WriteHashSet(HashSet<string> hashSet, string file)
+        {
+            if (hashSet.Count == 0)
+                return;
+            using(FileStream fs = File.OpenWrite(file))
+            using(BinaryWriter writer = new BinaryWriter(fs))
+            {
+                writer.Write(hashSet.Count);
+                foreach (var hash in hashSet)
+                {
+                    writer.Write(hash);
+                }
+            }
+        }
+
+        public HashSet<string> ReadHasSet(string file)
+        {
+            if (!File.Exists(file))
+                return new HashSet<string>();
+            var result = new HashSet<string>();
+            using (FileStream fs = File.OpenRead(file))
+            using (BinaryReader reader = new BinaryReader(fs))
+            {
+                int count = reader.ReadInt32();
+                for (int i = 0; i < count; i++)
+                {
+                    result.Add(reader.ReadString());
                 }
             }
             return result;
